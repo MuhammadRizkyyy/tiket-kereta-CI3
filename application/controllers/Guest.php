@@ -207,7 +207,6 @@ class Guest extends CI_Controller {
     $data['detail'] = $this->M_Guest->getPrint($no_tiket)->row();
     $data['jml_penumpang'] = $this->M_Guest->cekKonfirmasi($no_tiket)->num_rows();
 
-    $this->load->view('guest/template/header', $data);
     $this->load->view('print', $data);
     $this->load->view('guest/template/footer', $data);
   }
