@@ -98,6 +98,15 @@ class M_Admin extends CI_Model {
     return $this->db->update('pembayaran', $data);
   }
 
+  public function tolakVerifikasi($id) {
+    $data = [
+      'status' => 3
+    ];
+    $this->db->where('id', $id);
+
+    return $this->db->update('pembayaran', $data);
+  }
+
   public function prosesBerangkat($id) {
     $data = [
       'status' => 1

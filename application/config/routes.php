@@ -11,6 +11,7 @@ $route['pilihGerbong'] = 'guest/pilihGerbong';
 
 $route['admin/konfirmasi-pembayaran'] = 'admin/keHalamanKonfirPem';
 $route['verifikasi/(:num)'] = 'admin/verifikasiPembayaran/$1';
+$route['tolak/(:num)'] = 'admin/tolakPembayaran/$1';
 
 $route['kirimKonfirmasi'] = 'guest/kirimKonfirmasi';
 $route['pembayaran'] = 'guest/keHalamanPembayaran';

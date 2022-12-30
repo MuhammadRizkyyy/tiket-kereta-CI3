@@ -43,6 +43,7 @@
                 </td>
                 <td>
                     <a href="<?= base_url('verifikasi/'.$ls->id) ?>" class="btn btn-success" onclick="return confirm('Yakin ingin verifikasi No. <?= $ls->no_pembayaran ?> ?')">Konfirmasi</a>
+                    <a href="<?= base_url('tolak/'.$ls->id) ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin tolak No. <?= $ls->no_pembayaran ?> ?')">Tolak</a>
                 </td>
               </tr>
               <?php endforeach; ?>

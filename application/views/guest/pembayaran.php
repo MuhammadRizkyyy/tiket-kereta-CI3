@@ -13,7 +13,7 @@
   <div class="row justify-content-center my-3">
     <div class="col-md-6">
       <div class="alert alert-danger">
-        <h4>PERINGATAN! <br> JANGAN REFRESH HALAMAN INI!!</h4>
+        <h4 class="text-white">PERINGATAN! <br> JANGAN REFRESH HALAMAN INI!!</h4>
         <p>Untuk menghindari kegagalan sistem</p>
       </div>
       <div class="card">

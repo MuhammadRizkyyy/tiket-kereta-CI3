@@ -44,8 +44,18 @@
               <i class="bi bi-x-lg text-danger"></i> Belum dibayar
             <?php elseif($no_tiket->status === '2'): ?>
               <i class="bi bi-check-circle text-success"></i> Sudah dibayar
+            <?php elseif($no_tiket->status === '3'): ?>
+              <i class="bi bi-x-lg text-danger"></i> Ditolak
             <?php endif; ?>
           </h1>
+          <h6>
+            <?php if($no_tiket->status === '3'): ?>
+              <div class="alert alert-danger">
+                <?php $this->session->set_flashdata('tolak', 'Harap kirim bukti pembayaran dengan jelas dan benar'); ?>
+                <?= $this->session->flashdata('tolak') ?>
+              </div>
+            <?php endif; ?>
+          </h6>
           <?php if($this->session->flashdata('alert') !== null) : ?>
             <div class="alert alert-danger">
               <?= $this->session->flashdata('alert') ?>
@@ -85,9 +95,8 @@
                 </tr>
 
                 <?php if($dtl->gerbong !== NULL && $dtl->kursi !== NULL && $dtl->bagian !== NULL) :?>
-                <!-- Modal ganti -->
-                
 
+                <!-- Modal ganti -->
                 <div class="modal fade" id="gantiGerbong<?= $dtl->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -236,12 +245,13 @@
               </form>
             <?php endif; ?>
 
-            <?php if($no_tiket->status === '0'): ?>
+            <?php if($no_tiket->status === '0' || $no_tiket->status === '3'): ?>
               <p class="text-danger">Silahkan kirim bukti pembayaran di bawah ini.</p>
               <?= form_open_multipart('kirimKonfirmasi'); ?>
                 <input type="hidden" name="no_pembayaran" value="<?= $no_tiket->no_pembayaran ?>">
 
                 <p>Foto bukti pembayaran.</p>
+                
                 <input id="gambar" type="file" name="gambar" class="form-control" required>
                 <p class="d-none" id="pesan"></p>
                 <button id="btn_konfirmasi" type="submit" class="btn btn-dark my-3">Kirim</button>

@@ -144,6 +144,17 @@ class Admin extends CI_Controller {
     }
   }
 
+  public function tolakPembayaran($id) {
+    $tolak = $this->M_Admin->tolakVerifikasi($id);
+
+    if($tolak) {
+      $this->session->set_flashdata('pesan', 'Verifikasi di tolak');
+      redirect('admin/konfirmasi-pembayaran');
+    } else {
+      echo 'gagal';
+    }
+  }
+
   public function prosesBerangkat($id) {
     $update = $this->M_Admin->prosesBerangkat($id);
 
