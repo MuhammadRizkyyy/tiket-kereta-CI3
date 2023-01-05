@@ -18,6 +18,9 @@
           <li class="nav-item">
             <a class="nav-link active text-white" aria-current="page" href="<?= base_url('admin/konfirmasi-pembayaran'); ?>">Konfirmasi Pembayaran</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="<?= base_url('admin/riwayat-pembelian'); ?>">Riwayat Pembelian</a>
+          </li>
         </ul>
         <span>
           <a href="<?= base_url('logout') ?>" class="text-light b" style="text-decoration: none;">Logout</a>

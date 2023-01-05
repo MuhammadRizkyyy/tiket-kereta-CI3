@@ -135,5 +135,20 @@ class M_Admin extends CI_Model {
     return $insert;
   }
 
+  public function getRiwayatPembelian() {
+    $where = [
+      'status' => 2
+    ];
+
+    return $this->db->get_where('pembayaran', $where);
+  }
+
+  public function get_count() {
+    $sql = "SELECT sum(total_pembayaran) as total FROM pembayaran";
+    $result = $this->db->query($sql);
+
+    return $result->row()->total;
+  }
+
 
 }

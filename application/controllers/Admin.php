@@ -199,6 +199,14 @@ class Admin extends CI_Controller {
     }
   }
 
+  public function riwayatPembelian() {
+    $data['list'] = $this->M_Admin->getRiwayatPembelian()->result();
+    $data['count'] = $this->M_Admin->get_count();
+
+    $this->load->view('admin/riwayat_pembelian', $data);
+  }
+
+
   
 
 }

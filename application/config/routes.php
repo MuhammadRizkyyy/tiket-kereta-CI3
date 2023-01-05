@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$route['admin/riwayat-pembelian'] = 'admin/riwayatPembelian';
 $route['hapus/semua/(:any)'] = 'admin/hapus_semua/$1';
 
 $route['tambahKursi'] = 'admin/tambahKursi';
