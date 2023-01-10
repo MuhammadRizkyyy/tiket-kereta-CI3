@@ -143,8 +143,15 @@ class M_Admin extends CI_Model {
     return $this->db->get_where('pembayaran', $where);
   }
 
-  public function get_count() {
+  public function get_sum() {
     $sql = "SELECT sum(total_pembayaran) as total FROM pembayaran";
+    $result = $this->db->query($sql);
+
+    return $result->row()->total;
+  }
+
+  public function get_count() {
+    $sql = "SELECT count(total_pembayaran) as total FROM pembayaran";
     $result = $this->db->query($sql);
 
     return $result->row()->total;

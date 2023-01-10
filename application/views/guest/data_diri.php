@@ -76,7 +76,7 @@
             <tr>
               <th>No</th>
               <th>Nama</th>
-              <th>>= 17 Tahun Nomor ID(KTP, SIM, PASPORT)</th>
+              <th>>= 17 Tahun Nomor ID(KTP, NIK, SIM, PASPORT)</th>
             </tr>
           </thead>
           <tbody>

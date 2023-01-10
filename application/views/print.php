@@ -24,6 +24,7 @@
             </div>
             <!-- KANAN -->
             <div class="col-md-6">
+              <p>No. Tiket: <strong><?= $detail->nomor_tiket; ?></strong></p>
               <?php $date = date_create($detail->tanggal) ?>
               <p class="text-right"><strong><?= date_format($date, "d F Y h:i:s") ?></strong></p>
             </div>

@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require 'vendor/autoload.php';
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Admin extends CI_Controller {
   public function keHalamanLogin() {
@@ -201,12 +204,49 @@ class Admin extends CI_Controller {
 
   public function riwayatPembelian() {
     $data['list'] = $this->M_Admin->getRiwayatPembelian()->result();
+    $data['sum'] = $this->M_Admin->get_sum();
     $data['count'] = $this->M_Admin->get_count();
 
     $this->load->view('admin/riwayat_pembelian', $data);
   }
 
+  public function exportExcel() {
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
 
-  
+    foreach(range('A', 'E') as $coulumnID) {
+      $spreadsheet->getActiveSheet()->getColumnDimension($coulumnID)->setAutosize(true);
+    }
+
+    $sheet->setCellValue('A1', 'No');
+    $sheet->setCellValue('B1', 'No Pembayaran');
+    $sheet->setCellValue('C1', 'No Tiket');
+    $sheet->setCellValue('D1', 'Total Pembayaran');
+    $sheet->setCellValue('E1', 'Bukti Pembayaran');
+
+    $users = $this->M_Admin->getRiwayatPembelian()->result();
+
+    $x = 2;
+    $no = 1;
+    foreach($users as $row) {
+      $sheet->setCellValue('A'.$x, $no++);
+      $sheet->setCellValue('B'.$x, $row->no_pembayaran);
+      $sheet->setCellValue('C'.$x, $row->no_tiket);
+      $sheet->setCellValue('D'.$x, $row->total_pembayaran);
+      $sheet->setCellValue('E'.$x, $row->bukti);
+      $x++;
+    }
+
+    $writer = new Xlsx($spreadsheet);
+    $filename = 'RIWAYAT_PEMBELIAN.xlsx';
+    // $writer->save($filename);
+
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="'.$filename.'"');
+    $writer->save('php://output');
+
+
+
+  }
 
 }

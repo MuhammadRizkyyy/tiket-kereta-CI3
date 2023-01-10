@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?= base_url('bootstrap/css/bootstrap.min.css'); ?>">
   <title>Login</title>
+  <link rel="icon" href="<?= base_url('bootstrap/favicon.png') ?>" type="image/png">
 </head>
 <body>
   <div class="container-fluid">

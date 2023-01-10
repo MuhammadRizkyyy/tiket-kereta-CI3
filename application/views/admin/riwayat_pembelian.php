@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riwayat Pembelian</title>
+  <link rel="icon" href="<?= base_url('bootstrap/favicon.png') ?>" type="image/png">
   <link rel="stylesheet" href="<?= base_url('bootstrap/css/bootstrap.min.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('bootstrap/css/datatables.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('bootstrap/css/datatables-b.css'); ?>">
@@ -14,12 +15,14 @@
   <?php include 'include/navbar.php'; ?>
   
   <div class="container-fluid my-5">
-    <h3 class="text-center">Riwayat Penjualan</h3>
+    <h3 class="text-center">Riwayat Penjualan</h3><br>
     <div class="row">
       <div class="card">
+        <div class="card-header bg-primary text-white">Daftar Riwayat Pembelian</div>
         <div class="card-body">
           <div class="table-responsive">
           <table class="table table-striped table-bordered datatables">
+            <a href="<?= base_url('admin/exportExcel') ?>" class="btn btn-success mb-3">Export Excel</a>
             <thead>
               <tr>
                 <th>No. Pembayaran</th>
@@ -44,7 +47,8 @@
             </tbody>
           </table>
 
-          <h5>Total Penjualan: <?= "Rp " . number_format($count,0,',','.'); ?> </h5>
+          <h5>Total Penjualan: <?= "Rp " . number_format($sum,0,',','.'); ?> </h5>
+          <h5>Tiket Terjual: <?= $count; ?></h5>
           </div>  
         </div>
       </div>
